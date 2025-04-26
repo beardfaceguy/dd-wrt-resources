@@ -1,0 +1,32 @@
+Netgear R6400v1 DD-WRT Flash & Recovery - Quick Checklist
+
+--- Pre-Flash Steps ---
+1. Confirm router model: Netgear R6400 v1 only.
+2. Backup:
+   - Stock firmware (download .chk file)
+   - ISP settings (PPPoE login, etc.)
+   - DD-WRT settings (if already running DD-WRT)
+3. Download correct "factory-to-ddwrt.chk" file.
+4. Verify CFE (optional).
+5. Full Factory Reset (30/30/30 reset).
+6. Clear browser cache.
+7. Use wired Ethernet connection only.
+8. Flash factory-to-ddwrt.chk via Netgear web UI.
+9. Wait 5+ minutes after flashing (don't interrupt).
+10. 30/30/30 reset again after flash.
+11. Set new DD-WRT login credentials.
+12. Save settings and reboot.
+
+--- If Flash Fails (Recovery via TFTP) ---
+1. Set static IP: 192.168.1.10 / 255.255.255.0 / Gateway 192.168.1.1
+2. Download stock Netgear firmware (.chk file).
+3. Prepare router: power off, hold reset, power on, hold 30+ sec.
+4. TFTP firmware upload:
+   - Command example: tftp -i 192.168.1.1 put firmware.chk
+5. Wait patiently for reboot (5+ minutes).
+6. Retry DD-WRT flashing once back on stock firmware.
+
+Notes:
+- Timing is critical during TFTP.
+- Disable firewall/antivirus temporarily during recovery if needed.
+
